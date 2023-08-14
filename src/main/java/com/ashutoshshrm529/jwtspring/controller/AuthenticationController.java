@@ -14,6 +14,7 @@ import com.ashutoshshrm529.jwtspring.communication.request.UserRegisterRequest;
 import com.ashutoshshrm529.jwtspring.communication.response.JWTResponse;
 import com.ashutoshshrm529.jwtspring.service.auth.AuthenticationService;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 @RestController
@@ -26,14 +27,14 @@ public class AuthenticationController {
 
     @PostMapping("/login")
     public ResponseEntity<JWTResponse> login(
-        @RequestBody JWTLoginRequest request
+        @Valid @RequestBody JWTLoginRequest request
     ) {
         return ResponseEntity.ok(service.login(request));
     }
 
     @PostMapping("/refresh")
     public ResponseEntity<JWTResponse> refresh(
-        @RequestBody JWTRefreshRequest request
+        @Valid @RequestBody JWTRefreshRequest request
     ) {
         return ResponseEntity.ok(service.refresh(request));
     }
@@ -41,7 +42,7 @@ public class AuthenticationController {
     @PostMapping("/register")
     @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<JWTResponse> register(
-        @RequestBody UserRegisterRequest request
+        @Valid @RequestBody UserRegisterRequest request
     ) {
         return ResponseEntity.ok(service.register(request));
     }
