@@ -1,0 +1,27 @@
+{"properties": [
+  {
+    "name": "vegeta2001.app.jwt-secret",
+    "type": "java.lang.String",
+    "description": "A description for 'vegeta2001.app.jwt-secret'"
+  },
+  {
+    "name": "vegeta2001.app.accessExpirationTime",
+    "type": "java.lang.String",
+    "description": "A description for 'vegeta2001.app.accessExpirationTime'"
+  },
+  {
+    "name": "vegeta2001.app.refreshExpirationTime",
+    "type": "java.lang.String",
+    "description": "A description for 'vegeta2001.app.refreshExpirationTime'"
+  },
+  {
+    "name": "vegeta2001.app.superuserEmail",
+    "type": "java.lang.String",
+    "description": "A description for 'vegeta2001.app.superuserEmail'"
+  },
+  {
+    "name": "vegeta2001.app.superuserPassword",
+    "type": "java.lang.String",
+    "description": "A description for 'vegeta2001.app.superuserPassword'"
+  }
+]}
