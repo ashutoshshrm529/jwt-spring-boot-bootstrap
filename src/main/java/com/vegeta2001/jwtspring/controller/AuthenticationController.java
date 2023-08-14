@@ -1,4 +1,4 @@
-package com.vegeta2001.jwtspring.auth;
+package com.vegeta2001.jwtspring.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -7,6 +7,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.vegeta2001.jwtspring.communication.request.JWTLoginRequest;
+import com.vegeta2001.jwtspring.communication.request.JWTRefreshRequest;
+import com.vegeta2001.jwtspring.communication.request.UserRegisterRequest;
+import com.vegeta2001.jwtspring.communication.response.JWTResponse;
+import com.vegeta2001.jwtspring.service.auth.AuthenticationService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -19,23 +25,23 @@ public class AuthenticationController {
     private final AuthenticationService service;
 
     @PostMapping("/login")
-    public ResponseEntity<AuthenticationResponse> login(
-        @RequestBody AuthenticationRequest request
+    public ResponseEntity<JWTResponse> login(
+        @RequestBody JWTLoginRequest request
     ) {
         return ResponseEntity.ok(service.login(request));
     }
 
     @PostMapping("/refresh")
-    public ResponseEntity<AuthenticationResponse> refresh(
-        @RequestBody RefreshRequest request
+    public ResponseEntity<JWTResponse> refresh(
+        @RequestBody JWTRefreshRequest request
     ) {
         return ResponseEntity.ok(service.refresh(request));
     }
 
     @PostMapping("/register")
     @PreAuthorize("hasAuthority('ADMIN')")
-    public ResponseEntity<AuthenticationResponse> register(
-        @RequestBody RegisterRequest request
+    public ResponseEntity<JWTResponse> register(
+        @RequestBody UserRegisterRequest request
     ) {
         return ResponseEntity.ok(service.register(request));
     }

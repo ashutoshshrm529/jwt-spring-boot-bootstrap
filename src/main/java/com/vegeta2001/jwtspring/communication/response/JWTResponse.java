@@ -1,4 +1,4 @@
-package com.vegeta2001.jwtspring.auth;
+package com.vegeta2001.jwtspring.communication.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class AuthenticationResponse {
+public class JWTResponse {
     private String accessToken;
     private String refreshToken;
 }

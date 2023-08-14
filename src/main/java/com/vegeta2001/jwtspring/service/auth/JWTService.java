@@ -1,4 +1,4 @@
-package com.vegeta2001.jwtspring.config;
+package com.vegeta2001.jwtspring.service.auth;
 
 import java.security.Key;
 import java.util.Date;

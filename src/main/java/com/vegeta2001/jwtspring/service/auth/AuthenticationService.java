@@ -1,4 +1,4 @@
-package com.vegeta2001.jwtspring.auth;
+package com.vegeta2001.jwtspring.service.auth;
 
 import java.util.List;
 
@@ -7,7 +7,10 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.vegeta2001.jwtspring.config.JWTService;
+import com.vegeta2001.jwtspring.communication.request.JWTLoginRequest;
+import com.vegeta2001.jwtspring.communication.request.JWTRefreshRequest;
+import com.vegeta2001.jwtspring.communication.request.UserRegisterRequest;
+import com.vegeta2001.jwtspring.communication.response.JWTResponse;
 import com.vegeta2001.jwtspring.model.RoleEnum;
 import com.vegeta2001.jwtspring.model.User;
 import com.vegeta2001.jwtspring.repository.RoleRepository;
@@ -26,7 +29,7 @@ public class AuthenticationService {
     private final PasswordEncoder passwordEncoder;
     private final AuthenticationManager authenticationManager;
 
-    public AuthenticationResponse login(AuthenticationRequest request) {
+    public JWTResponse login(JWTLoginRequest request) {
         authenticationManager.authenticate(
             new UsernamePasswordAuthenticationToken(
                 request.getEmail(),
@@ -39,7 +42,7 @@ public class AuthenticationService {
         return authResponse(user);
     }
 
-    public AuthenticationResponse refresh(RefreshRequest request) {
+    public JWTResponse refresh(JWTRefreshRequest request) {
         String refreshToken = request.getRefreshToken();
         String userEmail = jwtService.extractUsername(refreshToken);
 
@@ -54,7 +57,7 @@ public class AuthenticationService {
         return null;
     }
 
-    public AuthenticationResponse register(RegisterRequest request) {
+    public JWTResponse register(UserRegisterRequest request) {
         User user = User.builder()
             .email(request.getEmail())
             .password(passwordEncoder.encode(request.getPassword()))
@@ -66,16 +69,16 @@ public class AuthenticationService {
         return authResponse(user);
     }
 
-    private AuthenticationResponse authResponse(User user) {
+    private JWTResponse authResponse(User user) {
         String jwtRefreshToken = jwtService.generateRefreshToken(user);
 
         return authRefreshResponse(user, jwtRefreshToken);
     }
 
-    private AuthenticationResponse authRefreshResponse(User user, String refreshToken) {
+    private JWTResponse authRefreshResponse(User user, String refreshToken) {
         String jwtToken = jwtService.generateToken(user);
 
-        return AuthenticationResponse.builder()
+        return JWTResponse.builder()
             .accessToken(jwtToken)
             .refreshToken(refreshToken)
             .build();

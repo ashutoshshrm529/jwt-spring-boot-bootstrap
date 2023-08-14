@@ -1,4 +1,4 @@
-package com.vegeta2001.jwtspring.auth;
+package com.vegeta2001.jwtspring.communication.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class RegisterRequest {
+public class JWTLoginRequest {
     private String email;
     private String password;
 }

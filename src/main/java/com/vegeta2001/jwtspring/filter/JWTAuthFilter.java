@@ -1,4 +1,4 @@
-package com.vegeta2001.jwtspring.config;
+package com.vegeta2001.jwtspring.filter;
 
 import java.io.IOException;
 
@@ -10,6 +10,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.filter.OncePerRequestFilter;
+
+import com.vegeta2001.jwtspring.service.auth.JWTService;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

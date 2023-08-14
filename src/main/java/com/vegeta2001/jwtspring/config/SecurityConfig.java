@@ -10,6 +10,8 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import com.vegeta2001.jwtspring.filter.JWTAuthFilter;
+
 import lombok.RequiredArgsConstructor;
 
 @Configuration

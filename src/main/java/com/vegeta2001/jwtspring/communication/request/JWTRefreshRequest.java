@@ -1,4 +1,4 @@
-package com.vegeta2001.jwtspring.auth;
+package com.vegeta2001.jwtspring.communication.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,6 +9,6 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class RefreshRequest {
+public class JWTRefreshRequest {
     private String refreshToken;
 }
