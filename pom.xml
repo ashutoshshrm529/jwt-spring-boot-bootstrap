@@ -8,7 +8,7 @@
 		<version>3.1.2</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.vegeta2001</groupId>
+	<groupId>com.ashutoshshrm529</groupId>
 	<artifactId>jwtspring</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>jwtspring</name>
